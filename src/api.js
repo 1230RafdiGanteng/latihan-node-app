@@ -1,12 +1,12 @@
 import axios from "axios";
 import { http } from "./http";
 
-export const logins = async (email,password) => {
-    const data = {
-        email: email,
-        password: password
-    }
-    const api = await axios.post((http + "auth/login"),data)
+export const handleLogin = async (email,password) => {
+    const apiLogin = await axios
+        .post(http + "auth/login", {
+            email: email,
+            password: password
+        })
     .then((response) => {
         return response
     })
