@@ -1,6 +1,6 @@
 import { createContext, useContext, useState } from "react"
 import { useSearchParams } from "react-router-dom"
-import { handleLogin } from "../api"
+import { handleLogin,  removeTokens } from "../api"
 
 // Nilai default 
 const initialAuthState = {
@@ -21,7 +21,7 @@ const useAuth = () => {
 const AuthProvider = ({children}) => {
     // state
     const [isLoggedin, setIsLoggedin] = useState(false)
-    
+
     // fucntion
     const doLogin = async (email, password) => {
         // memanggil api dengan data email & password
@@ -30,12 +30,13 @@ const AuthProvider = ({children}) => {
         const apiResult = await handleLogin(email, password)
         console.log(apiResult)
 
-        console.log("tes kepanggil". isLoggedin)
+        console.log("tes kepanggil", isLoggedin)
         setIsLoggedin(true)
     }
 
     const doLogout = () => {
         setIsLoggedin(false)
+        removeTokens()
     }
     // return provider
     return(

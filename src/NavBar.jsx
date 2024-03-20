@@ -1,21 +1,36 @@
-import { Link, Outlet } from "react-router-dom";
-import { AuthProvider, useAuth } from "./Konteks/Auth";
-import { setTokens } from "./api";
+import { Link, Outlet } from "react-router-dom"
+import { useAuth } from "./Konteks/Auth"
 
-export default function NavBar({token}) {
-    const { isLoggedin } = useAuth()
+export default function Navbar() {
+
+    const { isLoggedin, doLogout } = useAuth()
+
     return (
         <>
-            <div className="flex p-3 bg-[#11009E] justify-around mb-3 text-white">
-                <h1 className="font-bold text-2xl">NotesApp</h1>
-                {isLoggedin ? (<span>Udah Login</span>) : (<span>Belum Login</span>)}
+            <div className="flex justify-around py-6 text-white">
 
-                <nav className="">
-                    {token !== null ? null : <Link className="ml-10" to={"/Registrasi"}> Register </Link>}
+                {isLoggedin ? (
+                    <span className="font-bold">Sudah Login</span>
+                ) : (
+                    <span className="font-bold">Belum Login</span>
+                )}
 
-                    {token !== null ? null : <Link to={"/Login"}> Login</Link>}
-                    <Link to={"/Note"}> Note</Link>
-                    {token !== null ? null : < Link onClick={() => onLogout()} >Logout</Link>}
+                <nav className="flex gap-12">
+                    {isLoggedin ? (
+                        //menampilkan menu Note dan Logout ketika isLoggedin true
+                        <>
+                            <Link to={"/Note"} className=" hover:text-sky-300 transition-all active:text-sky-300 focus:text-sky-300 ">Note</Link>
+                            <Link onClick={() => doLogout()}><span className="text-white font-sans hover:text-slate-300">Logout</span></Link>
+                        </>
+                    ) : (
+                        //menu Login dan Registrasi tidak tampil ketika isLoggedin true 
+                        <>
+                            <Link to={"/Registrasi"}><span className=" hover:text-sky-300 transition-all active:text-sky-300 focus:text-sky-300 ">Regist</span></Link>
+                            <Link to={"/Login"}><span className=" hover:text-sky-300 transition-all active:text-sky-300 focus:text-sky-300 ">Login</span></Link>
+                        </>
+                    )}
+
+
                 </nav>
             </div>
             <Outlet />

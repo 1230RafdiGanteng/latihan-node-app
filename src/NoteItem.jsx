@@ -1,24 +1,25 @@
-function NoteItem({ title, content, id, onDelete, onEdit }) {
+function NoteItem({ id, title, content, onDelete, onEdit }) {
+
+  const handleDelete = (id) => {
+    const konfirm = confirm("Apakah Anda Yakin Ingin Menghapusnya?")
+    if (konfirm) {
+      onDelete(id)
+      alert("Berhasil menghapus")
+    }
+  }
   return (
-    <section class="flex mt-10 font-serif text-xl">
 
-      <div class="p-10 rounded-2xl text-left text-black font-mono bg-[url('kertas.jpg')] bg-cover bg-center bg-no-repeat">
-
-        <div className="flex justify-between   text-left text-3xl font-semibold text-black font-mono">
-          <h1 className='font-semibold text-2xl'>{title}</h1>
+    <div className="container-notes-element mt-16">
+      <div className="notes-element max-w-sm bg-sky-950 p-10 rounded-xl" >
+        <div className="heading-notes-element flex justify-between mb-5">
+          <h1 className="text-2xl font-bold cursor-pointer text-white">{title}</h1>
+          <button type='button' className="font-extrabold text-3xl font-mono text-red-500" onClick={() => handleDelete(id)}>x</button>
         </div>
-
-        <p className='mt-3'>{content}</p>
-
-        <div className="mt-5">
-          <button className="hover:text-red-700 border-2 border-black w-[100px] mr-5" onClick={() => onDelete(id)}>Delete</button>
-          <button className=" hover:text-red-700 border-2 border-black w-[100px]" onClick={() => onEdit(id)}>Edit</button>
-        </div>
-
+        <p className="text-white">{content}</p>
+        <button type="submit" className="bg-orange-600 rounded px-5 py-1 mt-5 text-white" onClick={() => onEdit(id)} >Edit</button>
       </div>
+    </div>
 
-    </section>
   )
 }
-
 export default NoteItem
