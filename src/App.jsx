@@ -30,12 +30,43 @@ function App() {
 
     return (
         <BrowserRouter>
-            <Routes>
-                <Route element={<NavBar token={token} onLogout={handleLogout}/>}>
-                    <Route path={"/Note"} element={<Note />} /> 
-                    <Route path={"/Login"} element={<Login onLogin={handleLogin}/>} />
-                    <Route path={"/Registrasi"} element={<Registrasi/>}/>
+             <Routes>
+                    <Route element={<NavBar token={token} onLogout={handleLogout} />}>
+                        {isLoggedin ? (
+                            //halaman Note akan terbuka ketika isLoggedin true
+                            //
+                            <>
+                                <Route path={"/Note"} element={<Note />} />
+                                <Route path={"/Registrasi"} element={<Navigate to={"/Note"} />} />
+                                <Route path={"/Login"} element={<Navigate to={"/Note"} />} />
+                            </>
+                        ) : (
+                            <>
+                                <Route path={"*"} element={<Navigate to={"/Login"} />} />
+                                <Route path={"/Registrasi"} element={<Registrasi />} />
+                                <Route path={"/Login"} element={<Login onLogin={handleLogin} />} />
+                            </>
+                        )}
+
+
+
+                    </Route>
+                    {/* {token !== null ?
+                        <Route>
+                            <Route path={"/Note"} element={<Note />} />
+                            <Route path="*" element={<Navigate to={"/Note"} />} />
+                        </Route>
+                        : <Route path={"/Note"} element={<h1 className="text-white grid place-items-center mt-[16rem] font-bold text-[4rem]">Not Found</h1>} />}
+                    {
+                        token !== null ? null :
+                            <Route>
+                                <Route path={"/Regist"} element={<Regist />} />
+                                <Route path={"/Login"} element={<Login onLogin={handleLogin} />} />
+                            </Route>
+                    }
                 </Route>
+                <Route path="*" element={<Navigate to={"/Login"} />} /> */}
+                </Routes>
                 {/* {token !== null ? 
                     <Route>
                         <Route path={"/Note"} element={<Note />} /> 
@@ -51,7 +82,7 @@ function App() {
                 }
                 </Route>
                 <Route path="*" element={<Navigate to={"/Login"}/>}/> */}
-            </Routes>
+            
 
         </BrowserRouter>
 

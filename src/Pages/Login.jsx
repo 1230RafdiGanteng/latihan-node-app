@@ -48,21 +48,21 @@ function Login({ onLogin }) {
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             className="w-full rounded-sm p-1 text-sm mt-1"
-                            type="text"
+                            type="email"
                             name="" id="content"
                             placeholder="Email"></input>
                         <input
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             className="w-full rounded-sm p-1 text-sm mt-1"
-                            type="text"
+                            type="password"
                             name=""
                             id="content"
                             placeholder="Password"></input>
                     </div>
                     {/* <button className='bg-white pt-1 pb-1 pl-2 pr-2 rounded-lg mt-2 shadow-sm hover:shadow-lg hover:bg-slate-100 hover:bg-contain' onClick={HandlerLogin} >Login</button> */}
                     <button
-                        className='bg-white pt-1 pb-1 pl-2 pr-2 rounded-lg mt-2 shadow-sm hover:shadow-lg hover:bg-slate-100 hover:bg-contain' onClick={handleClick}>
+                        className='bg-white pt-1 pb-1 pl-2 pr-2 rounded-lg mt-2 shadow-sm hover:shadow-lg hover:bg-slate-100 hover:bg-contain' onClick={handleLogin}>
                         Login
                     </button>
                 </div>
