@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from 'react'
 import NoteItem from './NoteItem'
 import { nanoid } from 'nanoid'
-import FormTambah from './formTambah'
+import FormTambah from './FormTambah'
 import FormEdit from './FormEdit'
 import axios from 'axios'
-import { addNote, deleteNote, editNote, tampilkan } from './api'
+import { addNote, deleteNote, editNote, tampilkan } from '../Config/api'
 
 function Note() {
   const [notes, setNotes] = useState([])

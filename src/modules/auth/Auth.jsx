@@ -1,6 +1,6 @@
 import { createContext, useContext, useState } from "react"
 import { useSearchParams } from "react-router-dom"
-import { handleLogin,  removeTokens } from "../api"
+import { handleLogin,  removeTokens } from "../Config/api"
 
 // Nilai default 
 const initialAuthState = {

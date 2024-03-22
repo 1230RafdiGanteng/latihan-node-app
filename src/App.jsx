@@ -1,9 +1,9 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom"
-import NavBar from "./NavBar"
-import Notes from "./Notes"
-import Login from "./Pages/Login"
-import Registrasi from "./Pages/Registrasi"
-import { useAuth } from "./Konteks/Auth"
+import NavBar from "./NavBar/NavBar"
+import Notes from "./modules/Note/Notes"
+import Login from "./modules/auth/Login"
+import Registrasi from "./modules/auth/Registrasi"
+import { useAuth } from "./modules/auth/Auth"
 
 function App() {
     //panggil nilai isLoggedin dari context

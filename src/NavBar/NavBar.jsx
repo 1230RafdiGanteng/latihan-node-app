@@ -1,5 +1,5 @@
 import { Link, Outlet } from "react-router-dom"
-import { useAuth } from "./Konteks/Auth"
+import { useAuth } from "../modules/auth/Auth"
 
 export default function Navbar() {
 
@@ -7,7 +7,7 @@ export default function Navbar() {
 
     return (
         <>
-            <div className="flex justify-around py-6 text-white">
+            <div className="flex justify-around py-6 text-white bg-sky-700">
 
                 {isLoggedin ? (
                     <span className="font-bold">Sudah Login</span>
